@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmpManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="roleId" />
+    </Key>
+    <Property Name="roleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="roleDescription" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserAccount">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userFName" Type="nvarchar" MaxLength="128" />
+    <Property Name="userLName" Type="nvarchar" MaxLength="128" />
+    <Property Name="userAddress" Type="nvarchar" MaxLength="255" />
+    <Property Name="userEmail" Type="nvarchar" MaxLength="128" />
+    <Property Name="userPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="userName" Type="nvarchar" MaxLength="128" />
+    <Property Name="userPassword" Type="nvarchar" MaxLength="128" />
+    <Property Name="roleId" Type="int" />
+    <Property Name="createdBy" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <Function Name="sp_InsertUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fName" Type="nvarchar" Mode="In" />
+    <Parameter Name="lName" Type="nvarchar" Mode="In" />
+    <Parameter Name="uAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="uEmail" Type="nvarchar" Mode="In" />
+    <Parameter Name="uPhone" Type="nvarchar" Mode="In" />
+    <Parameter Name="uName" Type="nvarchar" Mode="In" />
+    <Parameter Name="uPass" Type="nvarchar" Mode="In" />
+    <Parameter Name="rId" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="EmpManagementModelStoreContainer">
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

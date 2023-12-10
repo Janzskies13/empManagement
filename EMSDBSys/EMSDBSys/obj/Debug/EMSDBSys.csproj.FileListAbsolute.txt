@@ -1,0 +1,14 @@
+C:\Users\dosad\Desktop\EMSDBSys\EMSDBSys\bin\Debug\EMSDBSys.exe.config
+C:\Users\dosad\Desktop\EMSDBSys\EMSDBSys\bin\Debug\EMSDBSys.exe
+C:\Users\dosad\Desktop\EMSDBSys\EMSDBSys\bin\Debug\EMSDBSys.pdb
+C:\Users\dosad\Desktop\EMSDBSys\EMSDBSys\bin\Debug\EntityFramework.dll
+C:\Users\dosad\Desktop\EMSDBSys\EMSDBSys\bin\Debug\EntityFramework.xml
+C:\Users\dosad\Desktop\EMSDBSys\EMSDBSys\obj\Debug\EMSDBSys.csproj.AssemblyReference.cache
+C:\Users\dosad\Desktop\EMSDBSys\EMSDBSys\obj\Debug\EMSDBSys.frmLogin.resources
+C:\Users\dosad\Desktop\EMSDBSys\EMSDBSys\obj\Debug\EMSDBSys.Forms.frmRegister.resources
+C:\Users\dosad\Desktop\EMSDBSys\EMSDBSys\obj\Debug\EMSDBSys.Properties.Resources.resources
+C:\Users\dosad\Desktop\EMSDBSys\EMSDBSys\obj\Debug\EMSDBSys.csproj.GenerateResource.cache
+C:\Users\dosad\Desktop\EMSDBSys\EMSDBSys\obj\Debug\EMSDBSys.csproj.CoreCompileInputs.cache
+C:\Users\dosad\Desktop\EMSDBSys\EMSDBSys\obj\Debug\EMSDBSys.csproj.CopyComplete
+C:\Users\dosad\Desktop\EMSDBSys\EMSDBSys\obj\Debug\EMSDBSys.exe
+C:\Users\dosad\Desktop\EMSDBSys\EMSDBSys\obj\Debug\EMSDBSys.pdb
