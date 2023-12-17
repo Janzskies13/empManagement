@@ -30,6 +30,7 @@ namespace EMSDBSys.AppData
     
         public DbSet<Role> Role { get; set; }
         public DbSet<UserAccount> UserAccount { get; set; }
+        public DbSet<vw_AllUsers> vw_AllUsers { get; set; }
     
         public virtual int sp_InsertUser(string fName, string lName, string uAddress, string uEmail, string uPhone, string uName, string uPass, Nullable<int> rId)
         {
@@ -66,6 +67,101 @@ namespace EMSDBSys.AppData
                 new ObjectParameter("rId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertUser", fNameParameter, lNameParameter, uAddressParameter, uEmailParameter, uPhoneParameter, uNameParameter, uPassParameter, rIdParameter);
+        }
+    
+        public virtual int sp_DeleteUser(Nullable<int> uId)
+        {
+            var uIdParameter = uId.HasValue ?
+                new ObjectParameter("uId", uId) :
+                new ObjectParameter("uId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_DeleteUser", uIdParameter);
+        }
+    
+        public virtual int sp_InsterUser(string uFN, string uLN, string uA, string uE, string uP, string uN, string uPass, Nullable<int> rId, Nullable<int> cB)
+        {
+            var uFNParameter = uFN != null ?
+                new ObjectParameter("uFN", uFN) :
+                new ObjectParameter("uFN", typeof(string));
+    
+            var uLNParameter = uLN != null ?
+                new ObjectParameter("uLN", uLN) :
+                new ObjectParameter("uLN", typeof(string));
+    
+            var uAParameter = uA != null ?
+                new ObjectParameter("uA", uA) :
+                new ObjectParameter("uA", typeof(string));
+    
+            var uEParameter = uE != null ?
+                new ObjectParameter("uE", uE) :
+                new ObjectParameter("uE", typeof(string));
+    
+            var uPParameter = uP != null ?
+                new ObjectParameter("uP", uP) :
+                new ObjectParameter("uP", typeof(string));
+    
+            var uNParameter = uN != null ?
+                new ObjectParameter("uN", uN) :
+                new ObjectParameter("uN", typeof(string));
+    
+            var uPassParameter = uPass != null ?
+                new ObjectParameter("uPass", uPass) :
+                new ObjectParameter("uPass", typeof(string));
+    
+            var rIdParameter = rId.HasValue ?
+                new ObjectParameter("rId", rId) :
+                new ObjectParameter("rId", typeof(int));
+    
+            var cBParameter = cB.HasValue ?
+                new ObjectParameter("cB", cB) :
+                new ObjectParameter("cB", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsterUser", uFNParameter, uLNParameter, uAParameter, uEParameter, uPParameter, uNParameter, uPassParameter, rIdParameter, cBParameter);
+        }
+    
+        public virtual int sp_UpdateUser(Nullable<int> uId, string uFN, string uLN, string uA, string uE, string uP, string uN, string uPass, Nullable<int> rId, Nullable<int> cB)
+        {
+            var uIdParameter = uId.HasValue ?
+                new ObjectParameter("uId", uId) :
+                new ObjectParameter("uId", typeof(int));
+    
+            var uFNParameter = uFN != null ?
+                new ObjectParameter("uFN", uFN) :
+                new ObjectParameter("uFN", typeof(string));
+    
+            var uLNParameter = uLN != null ?
+                new ObjectParameter("uLN", uLN) :
+                new ObjectParameter("uLN", typeof(string));
+    
+            var uAParameter = uA != null ?
+                new ObjectParameter("uA", uA) :
+                new ObjectParameter("uA", typeof(string));
+    
+            var uEParameter = uE != null ?
+                new ObjectParameter("uE", uE) :
+                new ObjectParameter("uE", typeof(string));
+    
+            var uPParameter = uP != null ?
+                new ObjectParameter("uP", uP) :
+                new ObjectParameter("uP", typeof(string));
+    
+            var uNParameter = uN != null ?
+                new ObjectParameter("uN", uN) :
+                new ObjectParameter("uN", typeof(string));
+    
+            var uPassParameter = uPass != null ?
+                new ObjectParameter("uPass", uPass) :
+                new ObjectParameter("uPass", typeof(string));
+    
+            var rIdParameter = rId.HasValue ?
+                new ObjectParameter("rId", rId) :
+                new ObjectParameter("rId", typeof(int));
+    
+            var cBParameter = cB.HasValue ?
+                new ObjectParameter("cB", cB) :
+                new ObjectParameter("cB", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateUser", uIdParameter, uFNParameter, uLNParameter, uAParameter, uEParameter, uPParameter, uNParameter, uPassParameter, rIdParameter, cBParameter);
         }
     }
 }

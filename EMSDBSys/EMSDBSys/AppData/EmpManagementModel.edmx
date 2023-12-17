@@ -28,6 +28,26 @@
           <Property Name="roleId" Type="int" />
           <Property Name="createdBy" Type="nvarchar" MaxLength="128" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EmpManagement.dbo.vw_AllUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_AllUsers">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userFName" Type="nvarchar" MaxLength="128" />
+          <Property Name="userLName" Type="nvarchar" MaxLength="128" />
+          <Property Name="userAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="userEmail" Type="nvarchar" MaxLength="128" />
+          <Property Name="userPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="userName" Type="nvarchar" MaxLength="128" />
+          <Property Name="userPassword" Type="nvarchar" MaxLength="128" />
+          <Property Name="roleId" Type="int" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <Function Name="sp_DeleteUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="uId" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_InsertUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fName" Type="nvarchar" Mode="In" />
           <Parameter Name="lName" Type="nvarchar" Mode="In" />
@@ -38,9 +58,46 @@
           <Parameter Name="uPass" Type="nvarchar" Mode="In" />
           <Parameter Name="rId" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_InsterUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="uFN" Type="nvarchar" Mode="In" />
+          <Parameter Name="uLN" Type="nvarchar" Mode="In" />
+          <Parameter Name="uA" Type="nvarchar" Mode="In" />
+          <Parameter Name="uE" Type="nvarchar" Mode="In" />
+          <Parameter Name="uP" Type="nvarchar" Mode="In" />
+          <Parameter Name="uN" Type="nvarchar" Mode="In" />
+          <Parameter Name="uPass" Type="nvarchar" Mode="In" />
+          <Parameter Name="rId" Type="int" Mode="In" />
+          <Parameter Name="cB" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="uId" Type="int" Mode="In" />
+          <Parameter Name="uFN" Type="nvarchar" Mode="In" />
+          <Parameter Name="uLN" Type="nvarchar" Mode="In" />
+          <Parameter Name="uA" Type="nvarchar" Mode="In" />
+          <Parameter Name="uE" Type="nvarchar" Mode="In" />
+          <Parameter Name="uP" Type="nvarchar" Mode="In" />
+          <Parameter Name="uN" Type="nvarchar" Mode="In" />
+          <Parameter Name="uPass" Type="nvarchar" Mode="In" />
+          <Parameter Name="rId" Type="int" Mode="In" />
+          <Parameter Name="cB" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="EmpManagementModelStoreContainer">
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_AllUsers" EntityType="Self.vw_AllUsers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_AllUsers].[userId] AS [userId], 
+[vw_AllUsers].[userFName] AS [userFName], 
+[vw_AllUsers].[userLName] AS [userLName], 
+[vw_AllUsers].[userAddress] AS [userAddress], 
+[vw_AllUsers].[userEmail] AS [userEmail], 
+[vw_AllUsers].[userPhone] AS [userPhone], 
+[vw_AllUsers].[userName] AS [userName], 
+[vw_AllUsers].[userPassword] AS [userPassword], 
+[vw_AllUsers].[roleId] AS [roleId], 
+[vw_AllUsers].[createdBy] AS [createdBy]
+FROM [dbo].[vw_AllUsers] AS [vw_AllUsers]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -82,7 +139,49 @@
             <Parameter Name="uPass" Mode="In" Type="String" />
             <Parameter Name="rId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="vw_AllUsers" EntityType="EmpManagementModel.vw_AllUsers" />
+          <FunctionImport Name="sp_DeleteUser">
+            <Parameter Name="uId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsterUser">
+            <Parameter Name="uFN" Mode="In" Type="String" />
+            <Parameter Name="uLN" Mode="In" Type="String" />
+            <Parameter Name="uA" Mode="In" Type="String" />
+            <Parameter Name="uE" Mode="In" Type="String" />
+            <Parameter Name="uP" Mode="In" Type="String" />
+            <Parameter Name="uN" Mode="In" Type="String" />
+            <Parameter Name="uPass" Mode="In" Type="String" />
+            <Parameter Name="rId" Mode="In" Type="Int32" />
+            <Parameter Name="cB" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateUser">
+            <Parameter Name="uId" Mode="In" Type="Int32" />
+            <Parameter Name="uFN" Mode="In" Type="String" />
+            <Parameter Name="uLN" Mode="In" Type="String" />
+            <Parameter Name="uA" Mode="In" Type="String" />
+            <Parameter Name="uE" Mode="In" Type="String" />
+            <Parameter Name="uP" Mode="In" Type="String" />
+            <Parameter Name="uN" Mode="In" Type="String" />
+            <Parameter Name="uPass" Mode="In" Type="String" />
+            <Parameter Name="rId" Mode="In" Type="Int32" />
+            <Parameter Name="cB" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <EntityType Name="vw_AllUsers">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userFName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="userLName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="userAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="userEmail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="userPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="userName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="userPassword" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="roleId" Type="Int32" />
+          <Property Name="createdBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -115,6 +214,25 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_InsertUser" FunctionName="EmpManagementModel.Store.sp_InsertUser" />
+          <EntitySetMapping Name="vw_AllUsers">
+            <EntityTypeMapping TypeName="EmpManagementModel.vw_AllUsers">
+              <MappingFragment StoreEntitySet="vw_AllUsers">
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="roleId" ColumnName="roleId" />
+                <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="userPhone" ColumnName="userPhone" />
+                <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+                <ScalarProperty Name="userAddress" ColumnName="userAddress" />
+                <ScalarProperty Name="userLName" ColumnName="userLName" />
+                <ScalarProperty Name="userFName" ColumnName="userFName" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_DeleteUser" FunctionName="EmpManagementModel.Store.sp_DeleteUser" />
+          <FunctionImportMapping FunctionImportName="sp_InsterUser" FunctionName="EmpManagementModel.Store.sp_InsterUser" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateUser" FunctionName="EmpManagementModel.Store.sp_UpdateUser" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

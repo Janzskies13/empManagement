@@ -74,6 +74,9 @@
     <Compile Include="AppData\UserAccount.cs">
       <DependentUpon>EmpManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AppData\vw_AllUsers.cs">
+      <DependentUpon>EmpManagementModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +114,9 @@
     <Compile Include="Utils\Constant.cs" />
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmAdmin.resx">
+      <DependentUpon>FrmAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRegister.resx">
       <DependentUpon>frmRegister.cs</DependentUpon>
