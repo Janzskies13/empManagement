@@ -27,5 +27,24 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_InsertUser" FunctionName="EmpManagementModel.Store.sp_InsertUser" />
+    <EntitySetMapping Name="vw_AllUsers">
+      <EntityTypeMapping TypeName="EmpManagementModel.vw_AllUsers">
+        <MappingFragment StoreEntitySet="vw_AllUsers">
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="roleId" ColumnName="roleId" />
+          <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userPhone" ColumnName="userPhone" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="userAddress" ColumnName="userAddress" />
+          <ScalarProperty Name="userLName" ColumnName="userLName" />
+          <ScalarProperty Name="userFName" ColumnName="userFName" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_DeleteUser" FunctionName="EmpManagementModel.Store.sp_DeleteUser" />
+    <FunctionImportMapping FunctionImportName="sp_InsterUser" FunctionName="EmpManagementModel.Store.sp_InsterUser" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateUser" FunctionName="EmpManagementModel.Store.sp_UpdateUser" />
   </EntityContainerMapping>
 </Mapping>

@@ -23,6 +23,26 @@
     <Property Name="roleId" Type="int" />
     <Property Name="createdBy" Type="nvarchar" MaxLength="128" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EmpManagement.dbo.vw_AllUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_AllUsers">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userFName" Type="nvarchar" MaxLength="128" />
+    <Property Name="userLName" Type="nvarchar" MaxLength="128" />
+    <Property Name="userAddress" Type="nvarchar" MaxLength="255" />
+    <Property Name="userEmail" Type="nvarchar" MaxLength="128" />
+    <Property Name="userPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="userName" Type="nvarchar" MaxLength="128" />
+    <Property Name="userPassword" Type="nvarchar" MaxLength="128" />
+    <Property Name="roleId" Type="int" />
+    <Property Name="createdBy" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <Function Name="sp_DeleteUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="uId" Type="int" Mode="In" />
+  </Function>
   <Function Name="sp_InsertUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="fName" Type="nvarchar" Mode="In" />
     <Parameter Name="lName" Type="nvarchar" Mode="In" />
@@ -33,8 +53,45 @@
     <Parameter Name="uPass" Type="nvarchar" Mode="In" />
     <Parameter Name="rId" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_InsterUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="uFN" Type="nvarchar" Mode="In" />
+    <Parameter Name="uLN" Type="nvarchar" Mode="In" />
+    <Parameter Name="uA" Type="nvarchar" Mode="In" />
+    <Parameter Name="uE" Type="nvarchar" Mode="In" />
+    <Parameter Name="uP" Type="nvarchar" Mode="In" />
+    <Parameter Name="uN" Type="nvarchar" Mode="In" />
+    <Parameter Name="uPass" Type="nvarchar" Mode="In" />
+    <Parameter Name="rId" Type="int" Mode="In" />
+    <Parameter Name="cB" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_UpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="uId" Type="int" Mode="In" />
+    <Parameter Name="uFN" Type="nvarchar" Mode="In" />
+    <Parameter Name="uLN" Type="nvarchar" Mode="In" />
+    <Parameter Name="uA" Type="nvarchar" Mode="In" />
+    <Parameter Name="uE" Type="nvarchar" Mode="In" />
+    <Parameter Name="uP" Type="nvarchar" Mode="In" />
+    <Parameter Name="uN" Type="nvarchar" Mode="In" />
+    <Parameter Name="uPass" Type="nvarchar" Mode="In" />
+    <Parameter Name="rId" Type="int" Mode="In" />
+    <Parameter Name="cB" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="EmpManagementModelStoreContainer">
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_AllUsers" EntityType="Self.vw_AllUsers" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_AllUsers].[userId] AS [userId], 
+[vw_AllUsers].[userFName] AS [userFName], 
+[vw_AllUsers].[userLName] AS [userLName], 
+[vw_AllUsers].[userAddress] AS [userAddress], 
+[vw_AllUsers].[userEmail] AS [userEmail], 
+[vw_AllUsers].[userPhone] AS [userPhone], 
+[vw_AllUsers].[userName] AS [userName], 
+[vw_AllUsers].[userPassword] AS [userPassword], 
+[vw_AllUsers].[roleId] AS [roleId], 
+[vw_AllUsers].[createdBy] AS [createdBy]
+FROM [dbo].[vw_AllUsers] AS [vw_AllUsers]</DefiningQuery>
+    </EntitySet>
   </EntityContainer>
 </Schema>

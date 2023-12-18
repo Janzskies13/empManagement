@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlUsers = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -51,38 +51,39 @@
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
-            this.panel1.SuspendLayout();
+            this.btnUsers = new System.Windows.Forms.Button();
+            this.pnlUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnlUsers
             // 
-            this.panel1.Controls.Add(this.btnDelete);
-            this.panel1.Controls.Add(this.btnUpdate);
-            this.panel1.Controls.Add(this.btnAdd);
-            this.panel1.Controls.Add(this.cbRole);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.txtConfirmPass);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.txtPass);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.txtUsername);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.txtPhone);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.txtEmail);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.txtAddress);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txtLastName);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtFirstName);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.dgvUsers);
-            this.panel1.Location = new System.Drawing.Point(10, 66);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1034, 538);
-            this.panel1.TabIndex = 0;
+            this.pnlUsers.Controls.Add(this.btnDelete);
+            this.pnlUsers.Controls.Add(this.btnUpdate);
+            this.pnlUsers.Controls.Add(this.btnAdd);
+            this.pnlUsers.Controls.Add(this.cbRole);
+            this.pnlUsers.Controls.Add(this.label9);
+            this.pnlUsers.Controls.Add(this.txtConfirmPass);
+            this.pnlUsers.Controls.Add(this.label8);
+            this.pnlUsers.Controls.Add(this.txtPass);
+            this.pnlUsers.Controls.Add(this.label7);
+            this.pnlUsers.Controls.Add(this.txtUsername);
+            this.pnlUsers.Controls.Add(this.label6);
+            this.pnlUsers.Controls.Add(this.txtPhone);
+            this.pnlUsers.Controls.Add(this.label5);
+            this.pnlUsers.Controls.Add(this.txtEmail);
+            this.pnlUsers.Controls.Add(this.label4);
+            this.pnlUsers.Controls.Add(this.txtAddress);
+            this.pnlUsers.Controls.Add(this.label3);
+            this.pnlUsers.Controls.Add(this.txtLastName);
+            this.pnlUsers.Controls.Add(this.label2);
+            this.pnlUsers.Controls.Add(this.txtFirstName);
+            this.pnlUsers.Controls.Add(this.label1);
+            this.pnlUsers.Controls.Add(this.dgvUsers);
+            this.pnlUsers.Location = new System.Drawing.Point(10, 66);
+            this.pnlUsers.Name = "pnlUsers";
+            this.pnlUsers.Size = new System.Drawing.Size(1034, 538);
+            this.pnlUsers.TabIndex = 0;
             // 
             // btnDelete
             // 
@@ -102,6 +103,7 @@
             this.btnUpdate.TabIndex = 20;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAdd
             // 
@@ -271,19 +273,31 @@
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.Size = new System.Drawing.Size(707, 538);
             this.dgvUsers.TabIndex = 0;
+            this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
+            // 
+            // btnUsers
+            // 
+            this.btnUsers.Location = new System.Drawing.Point(12, 37);
+            this.btnUsers.Name = "btnUsers";
+            this.btnUsers.Size = new System.Drawing.Size(75, 23);
+            this.btnUsers.TabIndex = 22;
+            this.btnUsers.Text = "Users";
+            this.btnUsers.UseVisualStyleBackColor = true;
+            this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
             // 
             // FrmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 614);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnUsers);
+            this.Controls.Add(this.pnlUsers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmAdmin";
             this.Text = "FrmAdmin";
             this.Load += new System.EventHandler(this.FrmAdmin_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlUsers.ResumeLayout(false);
+            this.pnlUsers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.ResumeLayout(false);
 
@@ -291,7 +305,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlUsers;
         private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.Label label1;
@@ -315,5 +329,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnUsers;
     }
 }
